@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
-import { uuid } from 'uuidv4';
+// eslint-disable-next-line camelcase
+import { v4 as uuid_v4 } from 'uuid';
 import ToastContainer from '../components/ToastContainer';
 
 export interface ToastMessage {
@@ -22,7 +23,7 @@ const ToastProvider: React.FC = ({ children }) => {
   const [messages, setMessages] = useState<ToastMessage[]>([]);
   const addToast = useCallback(
     ({ type, title, description }: Omit<ToastMessage, 'id'>) => {
-      const id = uuid();
+      const id = uuid_v4();
       const toast = {
         id,
         type,
