@@ -1,16 +1,22 @@
+/* eslint-disable camelcase */
 import React, { createContext, useCallback, useContext, useState } from 'react';
 import api from '../services/api';
 
+interface User {
+  id: string;
+  name: string;
+  avatar_url: string;
+}
 interface AuthData {
   token: string;
-  user: object;
+  user: User;
 }
 interface SignInCredentials {
   email: string;
   password: string;
 }
 interface AuthContextData {
-  user: object;
+  user: User;
   signOut(): void;
   // eslint-disable-next-line no-unused-vars
   signIn(credentials: SignInCredentials): Promise<void>;
@@ -39,6 +45,7 @@ const AuthProvider: React.FC = ({ children }) => {
   const signOut = useCallback(() => {
     localStorage.removeItem('GoBarber:token');
     localStorage.removeItem('GoBarber:user');
+    setData({} as AuthData);
   }, []);
   return (
     <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
