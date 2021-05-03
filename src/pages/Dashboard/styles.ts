@@ -47,8 +47,12 @@ export const Profile = styled.div`
     span {
       color: #f4ede8;
     }
-    strong {
+    a {
+      text-decoration: none;
       color: #ff9000;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 `;
@@ -135,6 +139,9 @@ export const NextAppointment = styled.div`
 `;
 export const Section = styled.section`
   margin-top: 48px;
+  > p {
+    color: #999591;
+  }
   > strong {
     color: #999591;
     font-size: 20px;
@@ -153,6 +160,7 @@ export const Appointment = styled.div`
     margin-top: 16px;
   }
   span {
+    width: 70px;
     margin-left: auto;
     display: flex;
     align-items: center;
